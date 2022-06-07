@@ -7,24 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
     <link rel="stylesheet" href="./assets/style.css">
     <title>Weather Dashboard</title>
 </head>
 
 <body>
-    <!-- Jumbotron -->
+    <!-- Jumbotron to display the City name upon search -->
     <div id="header" class="jumbotron jumbotron-fluid text-container">
-        <h1 id="header-text" class="display-2"></h1>
+        <h1 id="header-text" class="display-2">Weather Dashboard</h1>
         <div id="artist-credit"></div>
     </div>
 
-    <!-- Main container -->
+    <!-- Main container for webpage content -->
     <div id="content" class="container">
         <div class="row">
 
-            <!--city search box and appended cities -->
+            <!-- Left side content with city search box and appended cities -->
             <div id="content-left" class="col-md-3">
                 <form>
                     <label for="search-city">Search for a City:</label>
@@ -34,13 +32,13 @@
                     </div>
                 </form>
                 <div id="search-error"></div>
-                <!-- Prior searched cities -->
+                <!-- list of prior searched cities -->
                 <ul id="city-results" class="list-group mt-4"></ul>
-                <!-- clear storage  -->
+                <!-- clear storage button -->
                 <a id="clear-storage" href="#"></a>    
             </div>
 
-            <!-- Current weather and five day forecast displays on search -->
+            <!-- Right side content showing current weather and five day forecast displays on search -->
             <div id="content-right" class="col-md-9 pt-4">
                 <!-- Current weather displayed on top -->
                 <div id="current-weather" class="border rounded"></div>
@@ -57,7 +55,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- moment.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <!-- Script -->
+    <!-- Custom Script -->
     <script src="./assets/script.js"></script>
     
 </body>
