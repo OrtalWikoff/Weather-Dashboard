@@ -3,8 +3,7 @@
     var cityName = document.getElementById("seach-city");
     var todaydate = document.getElementById("jumbotron")
     var newName = document.getElementById("button");
-    var body = document.getElementById("body");
-  
+    var icons = document.getElementsByClassName("icons")
    
     function GetInfo(e){
     var searchCity = cityName.value
@@ -18,7 +17,7 @@
 
 //Fetch for today's forcast in the jumbotron
     
-    function firstFetch(searchCity){
+   function firstFetch(searchCity){
     fetch("http://api.openweathermap.org/geo/1.0/direct?q="+searchCity+"&appid=962435ef3bd63c2c118e361ff306ea67")
         .then(function (response){
         //  console.log("DATA: ",  response); 
@@ -30,14 +29,13 @@
         var lon = data[0].lon
         var lat = data[0].lat
 
-        oneDay(lon, lat); 
+     oneDay(lon, lat); 
 
         })
 
 // Catch if there is an error 
-.catch(err =>alert("Something Went Wrong"))
+    .catch(err =>alert("xy"))
     }
-    console.log(todaydate)
   
 
 newName.addEventListener ("click", GetInfo); 
@@ -51,7 +49,7 @@ function oneDay(lat, lon){
 })
     .then(data =>{
         console.log(data);
-        //console.log(data.list[0].main.temp -273.15)*1.8)+32)
+
         var KelvinTemp = data.list[0].main.temp; 
         var convertTemp = ((KelvinTemp -273.15)*1.8)+32
         var windInfo = data.list[0].wind.speed
@@ -67,29 +65,19 @@ function oneDay(lat, lon){
 
         console.log(temp)
         console.log(humidity)
-
-
-
-
         console.log(temp)
-      //  wind.innerHTML = `<jumbotron>"${data.list[0].wind.speed}"</jumbotron>`
-        //humidity.innerHTML = `<jumbotron>"${convertTemp}"</jumbotron>`
-       // img.innerHTML = `<jumbotron>"${convertTemp}"</jumbotron>`
+    
        todaydate.append(temp, wind, humidity); 
        console.log(todaydate)
-      // todaydate.append(wind); 
-      //  todaydate.append(humidity); 
-
+      
+// Catch if there is an error 
+.catch(err =>alert("Something Went Wrong"))
         
 
-    
-        
-
-
-
-
+})
+        function fiveDays(){
         for(i=0;i<5;i++){
-        document.getElementById("day" + (i+1)+ "Temp").innerHTML ="Temp:" + Number(data.list[i].main.temp_min -296.2).toFixed(0)+"°";
+        document.getElementById(` + (i+1)+ Temperature`).innerHTML ="Temp:" + Number(data.list[i].main.temp);
     }  
     for(i=0;i<5;i++){
         document.getElementById("day" + (i+1)+ "Wind").innerHTML ="Wind:" + Number(data.list[i].wind.speed -4.78).toFixed(0);
@@ -100,26 +88,7 @@ function oneDay(lat, lon){
     for(i=0;i<5;i++){
         document.getElementById("img" +(i+1)).src = "http://openweathermap.org/img/wn/" + data.list[i].weather[0].icon+".png";
     }
-    cityName.innerHTML = oneDay; 
-
-})
-
-// Catch if there is an error 
-.catch(err =>alert("Something Went Wrong"))
-
+    i.innerHTML = oneDay; 
 }
- // loop throw the days
-var d = new Date();
-var weekday =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-function CheckDay(day){
-    if(day+d.getDay() > 6){
-        return day +d.getDay()-7;
-    }else{
-        return day+d.getDay(); 
-    }
-
+fiveDays()
 }
-for (i=0; i<5; i++){
-    document.getElementById("day"+(i+1)).innerHTML = weekday[CheckDay(i)]; 
-} 

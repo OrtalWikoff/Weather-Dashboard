@@ -1,101 +1,65 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
     <link rel="stylesheet" href="./assets/style.css">
-
-<!-- bootstrap -->
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
-rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">  
-    <title>Weather</title>
+    <title>Weather Dashboard</title>
 </head>
-<body id="body">
-      
-    <div class="title">Weather Dashboard</div>
 
- <!--Jumbotron for the current weather of the city name after searching -->
-
-   <div id= "jumbotron" class="rounded-2">
-
-
-
+<body>
+    <!-- Jumbotron to display the City name upon search -->
+    <div id="header" class="jumbotron jumbotron-fluid text-container">
+        <h1 id="header-text" class="display-2"></h1>
+        <div id="artist-credit"></div>
     </div>
 
+    <!-- Main container for webpage content -->
+    <div id="content" class="container">
+        <div class="row">
 
-    <!--Search bar -->
-        <form id="form">
-            <label for="search">Searh for a City:</label>
-                <input id="seach-city" class="form-control" name="city" value="Type here"></input>
-                <button id ="button" class="btn btn-primary" value="Type here" type="submit">Search</button>
-            </div>
-        </form> 
-
-        
-    <!--five days forecast -->
-    <div id="weatherContainers">
-        <div id="iconsContainer">
-
-            <div class="icons">
-                <p class="weather"id="day1"></p>
-                <div class="image"><img src= "#" class="imgClass" id="img1"></div>
-                <p class="Temp" id="Temp1"></p>
-                <p class="Wind" id="Wind1"></p>
-                <p class="Humidity" id="Humidity1"></p>      
-            </div>
-        
-            <div class="icons">
-                <p class="weather"id="day2"></p>
-                <div class="image"><img src= "#" class="imgClass" id="img2"></div>
-                <p class="Temp" id="Temp2"></p>
-                <p class="Wind" id="Wind2"></p>
-                <p class="Humidity" id="Humidity2"></p>      
+            <!-- Left side content with city search box and appended cities -->
+            <div id="content-left" class="col-md-3">
+                <form>
+                    <label for="search-city">Search for a City:</label>
+                    <div class="form-row">
+                        <input id="search-city" class="form-control" name="city" value="Tel Aviv"></input>
+                        <!-- fontawesome magnifying glass -->
+                        <button id="search-button" class="btn btn-primary" type="submit">search</button>
+                    </div>
+                </form>
+                <div id="search-error"></div>
+                <!-- list of prior searched cities -->
+                <ul id="city-results" class="list-group mt-4"></ul>
+                <!-- clear storage button -->
+                <a id="clear-storage" href="#"></a>    
             </div>
 
-            <div class="icons">
-                <p class="weather"id="day3"></p>
-                <div class="image"><img src= "#" class="imgClass" id="img3"></div>
-                <p class="Temp" id="Temp3"></p>
-                <p class="Wind" id="Wind3"></p>
-                <p class="Humidity" id="Humidity3"></p>      
-            </div>
-
-            <div class="icons">
-                <p class="weather"id="day4"></p>
-                <div class="image"><img src= "#" class="imgClass" id="img4"></div>
-                <p class="Temp" id="Temp4"></p>
-                <p class="Wind" id="Wind4"></p>
-                <p class="Humidity" id="Humidity4"></p>      
-            </div>
-
-            <div class="icons">
-                <p class="weather"id="day5"></p>
-                 <div class="image"><img src= "#" class="imgClass" id="img5"></div>
-                    <p class="Temp" id="Temp5"></p>
-                    <p class="Wind" id="Wind5"></p>
-                    <p class="Humidity" id="Humidity5"></p>      
-                </div>
-    
-
-
-
+            <!-- Right side content showing current weather and five day forecast displays on search -->
+            <div id="content-right" class="col-md-9 pt-4">
+                <!-- Current weather displayed on top -->
+                <div id="current-weather" class="border rounded"></div>
+                <!-- Five day forecast below the current weather -->
+                <div id="five-day-forecast" class="mt-5"></div>
             </div>
         </div>
     </div>
 
-
-
-   
-<script src="./assets/script.js"></script>
- 
-
-<!-- jQuery-->
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-
-
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- Custom Script -->
+    <script src="./assets/script.js"></script>
+    
 </body>
 </html>
