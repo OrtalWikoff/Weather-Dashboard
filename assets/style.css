@@ -1,10 +1,11 @@
+
 #header {
-    background-image: url("./weather.jpg");
+    background-image: url("Weather.jpg");
     text-align: center;
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
-    color: rgb(6, 11, 16);
+    color: rgb(198, 208, 218);
     border-radius: 30px;
 
 }
