@@ -1,8 +1,10 @@
 
 //  global variables
-var myAPI = "962435ef3bd63c2c118e361ff306ea67";
 var mainCity = "";
 var lastSearch = "";
+
+
+var myAPI = "962435ef3bd63c2c118e361ff306ea67";
 
 // event listener
 $('#search-button').on("click", (event) => {
@@ -29,7 +31,7 @@ var Err = (response) => {
 //current city
 var conditions = (event) => {
 
-    // city name under the search box
+    // city name (under the search box)
     let city = $('#search-city').val();
     mainCity= $('#search-city').val();
 
@@ -46,7 +48,7 @@ saveCity(city);
 $('#search-error').text("");
 //  icon for the current weather 
 let icon="https://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
-// Offset UTC timezone - using moment.js
+// timezone - using moment.js
 let currentTimeUTC = response.dt;
 let currentTimeZoneOffset = response.timezone;
 let currentTimeZoneOffsetHours = currentTimeZoneOffset / 60 / 60;
@@ -115,7 +117,7 @@ for (let i = 0; i < response.list.length; i++) {
     let timeZoneOffsetHours = timeZoneOffset / 60 / 60;
     let thisMoment = moment.unix(dayTimeUTC).utc().utcOffset(timeZoneOffsetHours);
     let iconURL = "https://openweathermap.org/img/w/" + dayData.weather[0].icon + ".png";
-    // Only displaying mid-day forecasts
+    //  displaying mid-day forecasts
     if (thisMoment.format("HH:mm:ss") === "11:00:00" || thisMoment.format("HH:mm:ss") === "12:00:00" || thisMoment.format("HH:mm:ss") === "13:00:00") {
         fiveInHtml += `
         <div class="weather-card card m-2 p0">
@@ -136,7 +138,7 @@ $('#five-day-forecast').html(fiveInHtml);
 })
 }
 
-// Fsave the city to localStorage
+// Save the city to localStorage
 var saveCity = (newCity) => {
 let cityExists = false;
 for (let i = 0; i < localStorage.length; i++) {
