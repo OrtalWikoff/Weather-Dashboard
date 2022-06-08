@@ -1,20 +1,32 @@
 
-//conect JS to the elements in HTML
-    var cityName = document.getElementById("seach-city");
-    var todaydate = document.getElementById("jumbotron")
-    var newName = document.getElementById("button");
-    var icons = document.getElementsByClassName("icons")
-   
-    function GetInfo(e){
-    var searchCity = cityName.value
-    cityName.innerHTML = oneDay.value
-   // todaydate.innerHTML = firstFetch.value
-    console.log(cityName.value)
-    e.preventDefault();
-    firstFetch(searchCity);  
+//  global variables
+var myAPI = "962435ef3bd63c2c118e361ff306ea67";
+var mainCity = "";
+var lastSearch = "";
+
+// event listener
+$('#search-button').on("click", (event) => {
+    event.preventDefault();
+    mainCity = $('#search-city').val();
+    conditions(event);
+    });
+    
+    // Old searched event listener
+    $('#city-results').on("click", (event) => {
+        event.preventDefault();
+        $('#search-city').val(event.target.textContent);
+        mainCity=$('#search-city').val();
+        conditions(event);
+    });
+
+
+var Err = (response) => {
+    if (!response.ok) {
+    }
+    return response;
 }
 
-
+____________________________________
 //Fetch for today's forcast in the jumbotron
     
    function firstFetch(searchCity){
