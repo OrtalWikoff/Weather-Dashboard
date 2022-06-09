@@ -3,8 +3,13 @@
 var mainCity = "";
 var lastSearch = "";
 
-
 var myAPI = "962435ef3bd63c2c118e361ff306ea67";
+
+var Err = (response) => {
+    if (!response.ok) {
+    }
+    return response;
+}
 
 // event listener
 $('#search-button').on("click", (event) => {
@@ -20,13 +25,6 @@ $('#search-button').on("click", (event) => {
         mainCity=$('#search-city').val();
         conditions(event);
     });
-
-
-var Err = (response) => {
-    if (!response.ok) {
-    }
-    return response;
-}
 
 //current city
 var conditions = (event) => {
@@ -190,7 +188,6 @@ if (localStorage.length>0){
 }
 
 }
-
 
 // Clear old searched 
 $("#clear-storage").on("click", (event) => {
