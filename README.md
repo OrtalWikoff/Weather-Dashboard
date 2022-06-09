@@ -8,3 +8,5 @@
 
 
 Here is a screenshot of the application:
+
+<img width="1440" alt="Screen Shot 2022-06-09 at 1 04 48 PM" src="https://user-images.githubusercontent.com/100814403/172907135-2c27ccdf-5f8b-49ea-8473-aeb79e6874bc.png">
