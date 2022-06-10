@@ -1,4 +1,3 @@
-
 //  global variables
 var mainCity = "";
 var lastSearch = "";
@@ -184,7 +183,7 @@ if (localStorage.length>0){
     $('#clear-storage').html($('<a id="clear-storage" href="#">clear</a>'));
 } else {
     $('#clear-storage').html('');
-}
+    }
 }
 
 }
